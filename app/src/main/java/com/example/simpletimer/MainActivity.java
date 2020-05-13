@@ -3,6 +3,7 @@ package com.example.simpletimer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity
         TextView timerValue = (TextView) findViewById(R.id.textView);
         int minutes = i/6000;
         int seconds = (i%6000)/100;
+        Log.i("hi", "whats the issu1e");
 
         timerValue.setText(minutes+":"+seconds);
 
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity
         SeekBar timeSeekBar = (SeekBar) findViewById(R.id.seekBar);
         timeSeekBar.setMax(20);
 
+        Log.i("hi", "whats the issu2e");
         timeSeekBar.setProgress(10);
         setTimer(10);
 
