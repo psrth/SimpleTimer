@@ -16,16 +16,38 @@ public class MainActivity extends AppCompatActivity
 {
     int time = 0;
     MediaPlayer mediaPlayer;
+    TextView timerTextView;
 
     public void onClick (View view)
     {
-        int millisInFuture = time*1000;
+        final int millisInFuture = time*1000;
         Log.i("Info", Integer.toString(millisInFuture));
         new CountDownTimer(millisInFuture, 1000)
         {
             public void onTick(long millisecondsUntilDone)
             {
+                int milli = (int) millisecondsUntilDone/1000;
                 Log.i("Seconds left", Long.toString(millisecondsUntilDone/1000));
+                int minutes = milli / 60;
+                int seconds = milli - (minutes * 60);
+
+                String secondsString;
+
+                if (seconds == 0)
+                {
+                    secondsString = "00";
+                }
+                else if (seconds < 10)
+                {
+                    secondsString = "0".concat(Integer.toString(seconds));
+                }
+                else
+                {
+                    secondsString = Integer.toString(seconds);
+                }
+
+
+                timerTextView.setText(Integer.toString(minutes)+":"+secondsString);
             }
 
             @Override
@@ -44,7 +66,7 @@ public class MainActivity extends AppCompatActivity
         mediaPlayer = MediaPlayer.create(this, R.raw.alarm);
 
         SeekBar timerSeekBar = (SeekBar) findViewById(R.id.seekBar);
-        final TextView timerTextView = (TextView) findViewById(R.id.textView);
+        timerTextView = (TextView) findViewById(R.id.textView);
 
         timerSeekBar.setMax(600);
         timerSeekBar.setProgress(30);
