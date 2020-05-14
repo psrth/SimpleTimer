@@ -22,20 +22,22 @@
         android:id="@+id/imageView"
         android:layout_width="289dp"
         android:layout_height="279dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/timer" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="157dp"
-        android:layout_height="40dp"
+        android:layout_width="156dp"
+        android:layout_height="52dp"
         android:layout_marginTop="28dp"
-        android:text="0:30"
+        android:text="1:00"
         android:textAlignment="center"
         android:textAllCaps="true"
+        android:textColor="#000000"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,12 +49,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:elevation="20dp"
         android:onClick="onClick"
         android:text="GO"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/pauseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickPause"
+        android:text="PAUSE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/restartButton"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
