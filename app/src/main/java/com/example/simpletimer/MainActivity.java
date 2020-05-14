@@ -2,44 +2,53 @@ package com.example.simpletimer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity
 {
-    boolean timerState = false;
 
-    public void setTimer(int i)
-    {
-        TextView timerValue = (TextView) findViewById(R.id.textView);
-        int minutes = i/6000;
-        int seconds = (i%6000)/100;
-        Log.i("hi", "whats the issu1e");
-
-        timerValue.setText(minutes+":"+seconds);
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SeekBar timeSeekBar = (SeekBar) findViewById(R.id.seekBar);
-        timeSeekBar.setMax(20);
+        SeekBar timerSeekBar = (SeekBar) findViewById(R.id.seekBar);
+        final TextView timerTextView = (TextView) findViewById(R.id.textView);
 
-        Log.i("hi", "whats the issu2e");
-        timeSeekBar.setProgress(10);
-        setTimer(10);
+        timerSeekBar.setMax(600);
+        timerSeekBar.setProgress(30);
 
-        timeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        timerSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b)
             {
-                setTimer(i*3000);
+                int minutes = i / 60;
+                int seconds = i - (minutes * 60);
+
+                String secondsString;
+
+                if (seconds == 0)
+                {
+                    secondsString = "00";
+                }
+                else if (seconds < 10)
+                {
+                    secondsString = "0".concat(Integer.toString(seconds));
+                }
+                else
+                {
+                    secondsString = Integer.toString(seconds);
+                }
+
+
+
+                timerTextView.setText(Integer.toString(minutes)+":"+secondsString);
+
             }
 
             @Override
@@ -54,5 +63,6 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
     }
 }
